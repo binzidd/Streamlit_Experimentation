@@ -90,8 +90,18 @@ st.sidebar.write('You selected: ', option)
 container = st.container()
 cols_1,cols_2,cols_3 = st.columns(3)
 
+
 cols_1.metric("Temparature", "70F", "1.2F", help='Temparature of the Day') #tooltip functionality
 
+
+chart_data_metrics = pd.DataFrame(
+     np.random.randn(20, 3),
+     columns=['a', 'b', 'c'])
+
+st.line_chart(chart_data)
+
+
+st.write('***')
 cols_2.metric("Car Prices", "$60,000","$5000", delta_color = 'inverse', help='Prices of Car as per Car Sales' )
 
 cols_3.metric("House Prices", "1,000,000", "$80000",help='House Prices as per Realestate Data')
