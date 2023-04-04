@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import plotly.figure_factory as ff
+
 
 st.write("#WELCOME TO MY APP#")
 
@@ -87,25 +89,24 @@ st.sidebar.write('You selected: ', option)
 
 #Grid Example
 
-container = st.container()
-cols_1,cols_2,cols_3 = st.columns(3)
 
+columns = st.columns(3)
 
-cols_1.metric("Temparature", "70F", "1.2F", help='Temparature of the Day') #tooltip functionality
+with columns[0]:
+    st.metric("Temparature", "70F", "1.2F", help='Temparature of the Day') #tooltip functionality
+    chart_data_metrics = pd.DataFrame(
+     np.random.randn(10, 2),
+     columns=['a', 'b'])
 
+    st.area_chart(chart_data_metrics,use_container_width=True)
 
-chart_data_metrics = pd.DataFrame(
-     np.random.randn(20, 3),
-     columns=['a', 'b', 'c'])
+with columns[1]:
+    st.metric("Car Prices", "$60,000","$5000", delta_color = 'inverse', help='Prices of Car as per Car Sales' )
+    st.line_chart(chart_data_metrics,use_container_width=True)
 
-st.line_chart(chart_data)
-
-
-st.write('***')
-cols_2.metric("Car Prices", "$60,000","$5000", delta_color = 'inverse', help='Prices of Car as per Car Sales' )
-
-cols_3.metric("House Prices", "1,000,000", "$80000",help='House Prices as per Realestate Data')
-
+with columns[2]:
+    st.metric("House Prices", "1,000,000", "$80000",help='House Prices as per Realestate Data')
+    st.bar_chart(chart_data_metrics,use_container_width=True)
 
 
 #Concept of Tabs
