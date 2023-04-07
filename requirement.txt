@@ -1,3 +1,4 @@
-packages.txt
-
+pandas
+numpy
+time
 tabula-py
