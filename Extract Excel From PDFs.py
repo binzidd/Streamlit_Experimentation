@@ -65,3 +65,5 @@ st.download_button(
 
 
 st.text('Copyright: MIT Common | Developed by Binay Siddharth')
+
+st.write ('https://www.buymeacoffee.com/binzidd')
